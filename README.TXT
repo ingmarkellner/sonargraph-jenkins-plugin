@@ -1,0 +1,1 @@
+The Sonargraph Jenkins plugin provides the easy integration of architectural checks into a Jenkins job.
