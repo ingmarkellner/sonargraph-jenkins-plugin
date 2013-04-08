@@ -1,0 +1,3 @@
+set LICENSE=C:/Users/Ingmar/.hello2morrow/SonargraphArchitect/SonargraphArchitect.license
+set SONARGRAPH_GOAL=com.hello2morrow.sonargraph:maven-sonargraph-plugin:7.1.9:architect-report 
+mvn clean package %SONARGRAPH_GOAL% -Dsonargraph.file=./AlarmClock-3-levels.sonargraph -Dsonargraph.prepareForJenkins=true -Dsonargraph.prepareForSonar=true -Dsonargraph.reportType=XML -Dsonargraph.license=%LICENSE% -Dsonargraph.useSonargraphWorkspace=true

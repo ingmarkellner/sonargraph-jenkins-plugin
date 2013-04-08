@@ -1,0 +1,8 @@
+#
+#Fri Apr 05 21:34:41 CEST 2013
+sonar.inactive.directories=
+sonar.buildunit.name=(Default Build Unit)
+sonar.active.directories=src/main/java|src/main/resources|src/test/java|src/test/resources|target/classes|target/generated-sources/jaxb|target/test-classes
+sonar.project.name=sonargraph-jenkins-project
+sonar.context.file=Sonargraph-Jenkins-Project.sonargraph
+sonar.violation.marker=Error

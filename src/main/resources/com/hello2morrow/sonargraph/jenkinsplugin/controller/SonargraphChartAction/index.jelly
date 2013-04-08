@@ -1,0 +1,38 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <l:layout title="${it.project.displayName} plots">
+    	<st:include it="${it.project}" page="sidepanel.jelly" />
+    	<l:main-panel>
+			<h1>${%Sonargraph Reports}</h1>
+      		<table cellspacing="20">
+      			<tr>
+      				<td>
+      					<img src="getPlot?name=Structural Debt Index&amp;yaxis=Debt&amp;csvColumn=1" width="${it.defaultGraphicWidth}" height="${it.defaultGraphicHeight}" />
+      				</td>
+      				<td>
+      					<img src="getPlot?name=Number of Architecture Violations&amp;yaxis=Violations&amp;csvColumn=2" width="${it.defaultGraphicWidth}" height="${it.defaultGraphicHeight}" />
+      				</td>
+      				<td>
+      					<img src="getPlot?name=Highest Average Component Dependency (ACD)&amp;yaxis=ACD&amp;csvColumn=3" width="${it.defaultGraphicWidth}" height="${it.defaultGraphicHeight}" />
+      				</td>
+      			</tr>
+      			<tr>
+      				<td>
+      					<img src="getPlot?name=Number of Byte Code instructions&amp;yaxis=Instructions&amp;csvColumn=4" width="${it.defaultGraphicWidth}" height="${it.defaultGraphicHeight}" />
+      				</td>
+      				<td>
+      					<img src="getPlot?name=Threshold Violations&amp;yaxis=Violations&amp;csvColumn=6" width="${it.defaultGraphicWidth}" height="${it.defaultGraphicHeight}" />
+      				</td>
+      				<td>
+      					<img src="getPlot?name=Size of biggest package cycle group&amp;yaxis=Biggest cycle group&amp;csvColumn=6" width="${it.defaultGraphicWidth}" height="${it.defaultGraphicHeight}" />
+      				</td>
+      			</tr>
+      			<tfoot>
+      				<a href="http://localhost:8080/jenkins/job/crm-domain-example/sonargraph-html-report">Read full Sonargraph report</a>
+      			</tfoot>
+      		</table>
+
+      	</l:main-panel>
+    </l:layout>
+</j:jelly>

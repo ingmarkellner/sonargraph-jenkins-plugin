@@ -1,0 +1,1 @@
+mvn clean install com.hello2morrow.sonargraph:maven-sonargraph-plugin:7.1.9:architect-report -Dsonargraph.reportType=HTML

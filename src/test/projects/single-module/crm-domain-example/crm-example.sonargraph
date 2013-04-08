@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<context version="7.1.9.199">
+    <scope type="Project" name="crm-domain-example">
+        <element type="TypeFilterReferenceOverridden" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+            <element type="ExcludeTypePattern" name="**.*Test"/>
+            <element type="ExcludeTypePattern" name="com.hello2morrow.ddaexample.business.testsuites.BusinessTestSuiteWithoutAppServer"/>
+        </element>
+        <architecture>
+            <element type="LayerGroup" name="Business">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="com.hello2morrow.**.business.**"/>
+                    <element type="ExcludeTypePattern" name="**.startup.**"/>
+                </element>
+                <element type="Layer" name="Controller">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.controller.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::Layer|DataServiceInterface" type="AllowedDependency"/>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::Layer|Domain" type="AllowedDependency"/>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::Layer|Service" type="AllowedDependency"/>
+                </element>
+                <element type="Layer" name="Data">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.data.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::Layer|DataServiceInterface" type="AllowedDependency"/>
+                </element>
+                <element type="Layer" name="DataServiceInterface">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.dsi.**"/>
+                    </element>
+                </element>
+                <element type="Layer" name="Service">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.service.**"/>
+                    </element>
+                </element>
+                <element type="Layer" name="Domain">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.domain.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::Layer|DataServiceInterface" type="AllowedDependency"/>
+                </element>
+                <element type="VerticalSlice" name="Contact">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.contact.**"/>
+                    </element>
+                </element>
+                <element type="VerticalSlice" name="Customer">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.customer.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|Contact" type="AllowedDependency"/>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|User" type="AllowedDependency"/>
+                </element>
+                <element type="VerticalSlice" name="Distributionpartner">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.distributionpartner.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|Contact" type="AllowedDependency"/>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|Customer" type="AllowedDependency"/>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|Request" type="AllowedDependency"/>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|User" type="AllowedDependency"/>
+                </element>
+                <element type="VerticalSlice" name="Request">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.request.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Business::VerticalSlice|User" type="AllowedDependency"/>
+                </element>
+                <element type="VerticalSlice" name="User">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.user.**"/>
+                    </element>
+                </element>
+                <element type="VerticalSlice" name="Common">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.common.**"/>
+                    </element>
+                    <stereotype name="Public"/>
+                </element>
+                <dependency toName="Project|crm-domain-example::LayerGroup|Integration" type="AllowedDependency"/>
+            </element>
+            <element type="LayerGroup" name="Integration">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="**.integration.**"/>
+                </element>
+                <element type="Layer" name="Adapter">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.adapter.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Integration::Layer|External Service Interface" type="AllowedDependency"/>
+                </element>
+                <element type="Layer" name="External Service Interface">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.esi.**"/>
+                    </element>
+                </element>
+                <element type="VerticalSlice" name="Common">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.common.**"/>
+                    </element>
+                </element>
+                <element type="VerticalSlice" name="Contact">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.contact.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Integration::VerticalSlice|Common" type="AllowedDependency"/>
+                </element>
+            </element>
+            <element type="LayerGroup" name="Foundation">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="**.foundation.**"/>
+                </element>
+                <stereotype name="Public"/>
+            </element>
+            <element type="LayerGroup" name="Application">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="**.startup.**"/>
+                </element>
+                <element type="Layer" name="Startup">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.startup.**"/>
+                    </element>
+                </element>
+                <element type="VerticalSlice" name="Common">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.dda.**"/>
+                    </element>
+                </element>
+                <element type="VerticalSlice" name="DdaExample">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="**.ddaexample.**"/>
+                    </element>
+                    <dependency toName="Project|crm-domain-example::LayerGroup|Application::VerticalSlice|Common" type="AllowedDependency"/>
+                </element>
+                <dependency toName="Project|crm-domain-example::LayerGroup|Business" type="AllowedDependency"/>
+                <dependency toName="Project|crm-domain-example::LayerGroup|Integration" type="AllowedDependency"/>
+            </element>
+        </architecture>
+        <workspace>
+            <element type="JavaRootDirectory" name="src/java"/>
+            <element type="JavaRootDirectory" name="src/java-test"/>
+            <element type="JavaRootDirectory" name="target.maven/cls"/>
+        </workspace>
+        <itemDefinition>
+            <item type="IgnoreWarningFilterItem">
+                <property value="LinesOfCode" name="AttributeId"/>
+                <property value="" name="Comment"/>
+                <property value="2011-11-11 12:24:56" name="Date"/>
+                <property value="JavaSourceFile" name="ElementType"/>
+                <property value="com/hello2morrow/dda/business/common/dsi/DomainObjectFactory.java" name="Pattern"/>
+            </item>
+            <item type="IgnoreWarningFilterItem">
+                <property value="ModifiedCyclomaticComplexity" name="AttributeId"/>
+                <property value="" name="Comment"/>
+                <property value="2012-07-20 16:11:45" name="Date"/>
+                <property value="ClassMethod" name="ElementType"/>
+                <property value="com.hello2morrow.dda.foundation.common.exception.AssertionUtility::static checkArray(Object[][]){}" name="Pattern"/>
+            </item>
+        </itemDefinition>
+    </scope>
+    <scope type="External" name="External">
+        <element type="TypeFilter" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+            <element type="ExcludeTypePattern" name="java.io.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.annotation.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.ref.*"/>
+            <element type="ExcludeTypePattern" name="java.math.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.channels.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.channels.spi.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.charset.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.charset.spi.*"/>
+            <element type="ExcludeTypePattern" name="java.text.*"/>
+            <element type="ExcludeTypePattern" name="java.util.*"/>
+            <element type="ExcludeTypePattern" name="java.util.jar.*"/>
+            <element type="ExcludeTypePattern" name="java.util.prefs.*"/>
+            <element type="ExcludeTypePattern" name="java.util.regex.*"/>
+            <element type="ExcludeTypePattern" name="java.util.zip.*"/>
+        </element>
+        <architecture>
+            <element type="Subsystem" name="JUnit">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="junit.**"/>
+                </element>
+                <stereotype name="Hidden"/>
+            </element>
+        </architecture>
+    </scope>
+    <scope type="Global" name="Global">
+        <element type="Configuration" name="Configuration"/>
+        <element type="TypeFilter" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+        </element>
+        <itemDefinition>
+            <item type="ThresholdItem">
+                <property value="NumberOfNotAssignedTypes" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Project" name="NamedElementGroup"/>
+                <property value="0" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfParameters" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Method" name="NamedElementGroup"/>
+                <property value="7" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfAccessibleTypes" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Namespace" name="NamedElementGroup"/>
+                <property value="30" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NormalizedCumulativeComponentDependency" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Project" name="NamedElementGroup"/>
+                <property value="7" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="LinesOfCode" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="SourceFile" name="NamedElementGroup"/>
+                <property value="700" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfInternalTypes" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Namespace" name="NamedElementGroup"/>
+                <property value="15" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfMethods" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Type" name="NamedElementGroup"/>
+                <property value="50" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="ModifiedCyclomaticComplexity" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Method" name="NamedElementGroup"/>
+                <property value="5" name="UpperValue"/>
+            </item>
+        </itemDefinition>
+    </scope>
+    <attributeConfiguration type="AttributeConfiguration">
+        <property value="disabled" name="ExtendedCyclomaticComplexity"/>
+        <property value="disabled" name="MaxExtendedCyclomaticComplexityPerMethod"/>
+        <property value="disabled" name="NumberOfWarnings"/>
+        <property value="disabled" name="AverageCyclomaticComplexityPerMethod"/>
+        <property value="disabled" name="NumberOfAbstractTypes"/>
+        <property value="disabled" name="JdkVersion"/>
+        <property value="disabled" name="NumberOfCyclicDirectories"/>
+        <property value="disabled" name="CyclomaticComplexity"/>
+        <property value="disabled" name="NumberOfMethodsWithImplementation"/>
+        <property value="disabled" name="NumberOfIgnoredWarnings"/>
+        <property value="disabled" name="NumberOfNamedInterfaces"/>
+        <property value="disabled" name="NumberOfCyclicProjects"/>
+        <property value="disabled" name="NumberOfRefactorings"/>
+        <property value="disabled" name="DependsUpon"/>
+        <property value="disabled" name="NumberOfVerticalSliceGroups"/>
+        <property value="disabled" name="DistributedOverPathContainers"/>
+        <property value="disabled" name="AverageExtendedCyclomaticComplexityPerMethod"/>
+        <property value="disabled" name="AverageTypeDependency"/>
+        <property value="disabled" name="NumberOfDuplicateCodeBlocksWarnings"/>
+        <property value="disabled" name="RelativeAverageTypeDependency"/>
+        <property value="disabled" name="AverageAccumulatedExtendedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="NumberOfLayerGroups"/>
+        <property value="disabled" name="NumberOfIgnoredViolations"/>
+        <property value="disabled" name="NumberOfFixWarnings"/>
+        <property value="disabled" name="NumberOfExcludedSourceFiles"/>
+        <property value="disabled" name="NumberOfVerticalSlices"/>
+        <property value="disabled" name="AverageAccumulatedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="Timestamp"/>
+        <property value="disabled" name="AverageAssertionUsage"/>
+        <property value="disabled" name="NumberOfCyclicSubsystems"/>
+        <property value="disabled" name="NumberOfCyclicNamespaces"/>
+        <property value="disabled" name="NumberOfExcludedTargetFiles"/>
+        <property value="disabled" name="NumberOfCyclicVerticalSliceGroups"/>
+        <property value="disabled" name="AccumulatedExtendedCyclomaticComplexity"/>
+        <property value="disabled" name="NumberOfLayers"/>
+        <property value="disabled" name="NumberOfCyclicSourceFiles"/>
+        <property value="disabled" name="MaxAccumulatedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="MaxAccumulatedExtendedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="NumberOfCyclicLayerGroups"/>
+        <property value="disabled" name="NumberOfAssertions"/>
+        <property value="disabled" name="NumberOfCyclicVerticalSlices"/>
+        <property value="disabled" name="NormalizedCumulativeTypeDependency"/>
+        <property value="disabled" name="AccumulatedCyclomaticComplexity"/>
+        <property value="disabled" name="NumberOfMetricWarnings"/>
+        <property value="disabled" name="NumberOfNameParts"/>
+        <property value="disabled" name="NumberOfTasks"/>
+        <property value="disabled" name="NumberOfWorkspaceWarnings"/>
+        <property value="disabled" name="NumberOfAbstractMethods"/>
+        <property value="disabled" name="NumberOfTypesWithImplementation"/>
+        <property value="disabled" name="Level"/>
+        <property value="disabled" name="NumberOfSubsystems"/>
+        <property value="disabled" name="NumberOfCyclicLayers"/>
+        <property value="disabled" name="MaxCyclomaticComplexityPerMethod"/>
+    </attributeConfiguration>
+    <duplicateSearchConfiguration type="DuplicateSearchConfiguration">
+        <property value="1" name="MinimalLineLength"/>
+        <property value="true" name="IgnoreComments"/>
+        <property value="20" name="MaximalRelativeTolerancePercentage"/>
+        <property value="2" name="MaximalTolerancePerEdit"/>
+    </duplicateSearchConfiguration>
+</context>

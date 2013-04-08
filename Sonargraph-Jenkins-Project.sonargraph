@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<context version="7.1.9.199">
+    <scope type="Project" name="sonargraph-jenkins-project">
+        <element type="TypeFilterReferenceOverridden" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+            <element type="ExcludeTypePattern" name="InjectedTest"/>
+        </element>
+        <architecture>
+            <element type="Layer" name="Foundation">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="com.hello2morrow.sonargraph.jenkinsplugin.foundation.**"/>
+                </element>
+                <stereotype name="Public"/>
+            </element>
+            <element type="Layer" name="Controller">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="**.controller.**"/>
+                </element>
+                <stereotype name="Unrestricted"/>
+                <dependency toName="External|External::Layer|Common" type="AllowedDependency"/>
+                <dependency toName="External|External::Layer|JSON" type="AllowedDependency"/>
+                <dependency toName="External|External::Layer|Jenkins" type="AllowedDependency"/>
+            </element>
+            <element type="Layer" name="Persistence">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="**.persistence.**"/>
+                    <element type="IncludeTypePattern" name="**.xsd.**"/>
+                </element>
+                <element type="Subsystem" name="JAXB_Classes">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="StrongTypePattern" name="**.xsd.**"/>
+                    </element>
+                    <dependency toName="External|External::Layer|JAXB::Subsystem|jaxb" type="AllowedDependency"/>
+                </element>
+                <dependency toName="External|External::Layer|Common" type="AllowedDependency"/>
+                <dependency toName="External|External::Layer|JAXB" type="AllowedDependency"/>
+                <dependency toName="Project|sonargraph-jenkins-project::Layer|Model" type="AllowedDependency"/>
+            </element>
+            <element type="Layer" name="Model">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="**.model.**"/>
+                </element>
+            </element>
+        </architecture>
+        <workspace>
+            <element type="JavaRootDirectory" name="src/main/java"/>
+            <element type="JavaRootDirectory" name="target/generated-sources/jaxb"/>
+            <element type="JavaRootDirectory" name="src/test/java"/>
+            <element type="JavaRootDirectory" name="target/classes"/>
+            <element type="JavaRootDirectory" name="target/test-classes"/>
+        </workspace>
+        <itemDefinition>
+            <item type="IgnoreWarningFilterItem">
+                <property value="DuplicateCodeBlocks" name="AttributeId"/>
+                <property value="" name="Comment"/>
+                <property value="2013-03-19 10:20:43" name="Date"/>
+                <property value="JavaSourceFile" name="ElementType"/>
+                <property value="com/hello2morrow/sonargraph/jenkinsplugin/xsd/*.java # com/hello2morrow/sonargraph/jenkinsplugin/xsd/*.java" name="Pattern"/>
+            </item>
+            <item type="IgnoreWarningFilterItem">
+                <property value="NumberOfAccessibleTypes" name="AttributeId"/>
+                <property value="Generated code" name="Comment"/>
+                <property value="2013-03-19 10:21:35" name="Date"/>
+                <property value="JavaPackage" name="ElementType"/>
+                <property value="com.hello2morrow.sonargraph.jenkinsplugin.xsd" name="Pattern"/>
+            </item>
+            <item type="IgnoreWarningFilterItem">
+                <property value="NumberOfParameters" name="AttributeId"/>
+                <property value="This is due to the infrastructure of Jenkins. Not sure, if we can do anything about it." name="Comment"/>
+                <property value="2013-04-05 21:35:41" name="Date"/>
+                <property value="Constructor" name="ElementType"/>
+                <property value="com.hello2morrow.sonargraph.jenkinsplugin.controller.AbstractSonargraphRecorder::AbstractSonargraphRecorder(String, String, String, String, String, String, String, String){}" name="Pattern"/>
+            </item>
+            <item type="IgnoreWarningFilterItem">
+                <property value="NumberOfParameters" name="AttributeId"/>
+                <property value="This is due to the infrastructure of Jenkins. Not sure, if we can do anything about it." name="Comment"/>
+                <property value="2013-04-05 21:36:18" name="Date"/>
+                <property value="Constructor" name="ElementType"/>
+                <property value="com.hello2morrow.sonargraph.jenkinsplugin.controller.SonargraphReportBuilder::SonargraphReportBuilder(String, String, String, String, String, String, String, String, String, String, String, String, String, String){}" name="Pattern"/>
+            </item>
+        </itemDefinition>
+    </scope>
+    <scope type="External" name="External">
+        <element type="TypeFilter" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+            <element type="ExcludeTypePattern" name="java.lang.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.annotation.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.ref.*"/>
+            <element type="ExcludeTypePattern" name="java.math.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.channels.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.channels.spi.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.charset.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.charset.spi.*"/>
+            <element type="ExcludeTypePattern" name="java.text.*"/>
+            <element type="ExcludeTypePattern" name="java.util.*"/>
+            <element type="ExcludeTypePattern" name="java.util.jar.*"/>
+            <element type="ExcludeTypePattern" name="java.util.prefs.*"/>
+            <element type="ExcludeTypePattern" name="java.util.regex.*"/>
+            <element type="ExcludeTypePattern" name="java.util.zip.*"/>
+        </element>
+        <architecture>
+            <element type="Layer" name="JAXB">
+                <element type="TypeFilter" name="Assignment"/>
+                <element type="Subsystem" name="jaxb">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="javax.xml.bind.*"/>
+                        <element type="IncludeTypePattern" name="javax.xml.bind.annotation.*"/>
+                    </element>
+                </element>
+                <stereotype name="Hidden"/>
+            </element>
+            <element type="Layer" name="Jenkins">
+                <element type="TypeFilter" name="Assignment"/>
+                <element type="Subsystem" name="hudson">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="hudson.**"/>
+                        <element type="IncludeTypePattern" name="org.kohsuke.stapler.*"/>
+                    </element>
+                </element>
+                <stereotype name="Hidden"/>
+            </element>
+            <element type="Layer" name="JSON">
+                <element type="TypeFilter" name="Assignment"/>
+                <element type="Subsystem" name="Json">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="net.sf.json.*"/>
+                    </element>
+                </element>
+                <stereotype name="Hidden"/>
+            </element>
+            <element type="Layer" name="Common">
+                <element type="TypeFilter" name="Assignment"/>
+                <element type="Subsystem" name="log4j">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="org.apache.log4j.*"/>
+                    </element>
+                </element>
+                <element type="Subsystem" name="Java IO File">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="java.io.*ile*"/>
+                    </element>
+                    <stereotype name="Hidden"/>
+                </element>
+            </element>
+        </architecture>
+    </scope>
+    <scope type="Global" name="Global">
+        <element type="Configuration" name="Configuration"/>
+        <element type="TypeFilter" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+        </element>
+        <itemDefinition>
+            <item type="ThresholdItem">
+                <property value="NumberOfNotAssignedTypes" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Project" name="NamedElementGroup"/>
+                <property value="0" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfParameters" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Method" name="NamedElementGroup"/>
+                <property value="7" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfAccessibleTypes" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Namespace" name="NamedElementGroup"/>
+                <property value="30" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NormalizedCumulativeComponentDependency" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Project" name="NamedElementGroup"/>
+                <property value="7" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="LinesOfCode" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="SourceFile" name="NamedElementGroup"/>
+                <property value="700" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfInternalTypes" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Namespace" name="NamedElementGroup"/>
+                <property value="50" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="NumberOfMethods" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Type" name="NamedElementGroup"/>
+                <property value="50" name="UpperValue"/>
+            </item>
+            <item type="ThresholdItem">
+                <property value="ModifiedCyclomaticComplexity" name="AttributeId"/>
+                <property value="" name="LowerValue"/>
+                <property value="Method" name="NamedElementGroup"/>
+                <property value="20" name="UpperValue"/>
+            </item>
+        </itemDefinition>
+    </scope>
+    <attributeConfiguration type="AttributeConfiguration">
+        <property value="disabled" name="ExtendedCyclomaticComplexity"/>
+        <property value="disabled" name="MaxExtendedCyclomaticComplexityPerMethod"/>
+        <property value="disabled" name="NumberOfWarnings"/>
+        <property value="disabled" name="AverageCyclomaticComplexityPerMethod"/>
+        <property value="disabled" name="NumberOfAbstractTypes"/>
+        <property value="disabled" name="JdkVersion"/>
+        <property value="disabled" name="NumberOfCyclicDirectories"/>
+        <property value="disabled" name="CyclomaticComplexity"/>
+        <property value="disabled" name="NumberOfMethodsWithImplementation"/>
+        <property value="disabled" name="NumberOfIgnoredWarnings"/>
+        <property value="disabled" name="NumberOfNamedInterfaces"/>
+        <property value="disabled" name="NumberOfCyclicProjects"/>
+        <property value="disabled" name="NumberOfRefactorings"/>
+        <property value="disabled" name="DependsUpon"/>
+        <property value="disabled" name="NumberOfVerticalSliceGroups"/>
+        <property value="disabled" name="DistributedOverPathContainers"/>
+        <property value="disabled" name="AverageExtendedCyclomaticComplexityPerMethod"/>
+        <property value="disabled" name="AverageTypeDependency"/>
+        <property value="disabled" name="NumberOfDuplicateCodeBlocksWarnings"/>
+        <property value="disabled" name="RelativeAverageTypeDependency"/>
+        <property value="disabled" name="AverageAccumulatedExtendedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="NumberOfLayerGroups"/>
+        <property value="disabled" name="NumberOfIgnoredViolations"/>
+        <property value="disabled" name="NumberOfFixWarnings"/>
+        <property value="disabled" name="NumberOfExcludedSourceFiles"/>
+        <property value="disabled" name="NumberOfVerticalSlices"/>
+        <property value="disabled" name="AverageAccumulatedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="Timestamp"/>
+        <property value="disabled" name="AverageAssertionUsage"/>
+        <property value="disabled" name="NumberOfCyclicSubsystems"/>
+        <property value="disabled" name="NumberOfCyclicNamespaces"/>
+        <property value="disabled" name="NumberOfExcludedTargetFiles"/>
+        <property value="disabled" name="NumberOfCyclicVerticalSliceGroups"/>
+        <property value="disabled" name="AccumulatedExtendedCyclomaticComplexity"/>
+        <property value="disabled" name="NumberOfLayers"/>
+        <property value="disabled" name="NumberOfCyclicSourceFiles"/>
+        <property value="disabled" name="MaxAccumulatedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="MaxAccumulatedExtendedCyclomaticComplexityPerType"/>
+        <property value="disabled" name="NumberOfCyclicLayerGroups"/>
+        <property value="disabled" name="NumberOfAssertions"/>
+        <property value="disabled" name="NumberOfCyclicVerticalSlices"/>
+        <property value="disabled" name="NormalizedCumulativeTypeDependency"/>
+        <property value="disabled" name="AccumulatedCyclomaticComplexity"/>
+        <property value="disabled" name="NumberOfMetricWarnings"/>
+        <property value="disabled" name="NumberOfNameParts"/>
+        <property value="disabled" name="NumberOfTasks"/>
+        <property value="disabled" name="NumberOfWorkspaceWarnings"/>
+        <property value="disabled" name="NumberOfAbstractMethods"/>
+        <property value="disabled" name="NumberOfTypesWithImplementation"/>
+        <property value="disabled" name="Level"/>
+        <property value="disabled" name="NumberOfSubsystems"/>
+        <property value="disabled" name="NumberOfCyclicLayers"/>
+        <property value="disabled" name="MaxCyclomaticComplexityPerMethod"/>
+    </attributeConfiguration>
+</context>
